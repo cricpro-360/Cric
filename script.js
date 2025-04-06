@@ -1,41 +1,24 @@
-const apiKey = '07de5d6b-7ed8-422a-a14a-6841c545e373';
-const scoresContainer = document.getElementById('scores');
+const proxy = "https://corsproxy.io/?";
+const apiKey = "07de5d6b-7ed8-422a-a14a-6841c545e373";
+const url = `https://api.cricapi.com/v1/currentMatches?apikey=${apiKey}&offset=0`;
+
+fetch(proxy + url)
+
 
 async function fetchScores() {
   try {
-    const response = await fetch(`https://api.cricapi.com/v1/currentMatches?apikey=${apiKey}&offset=0`);
-    const data = await response.json();
+    const res = await fetch(`https://corsproxy.io/?https://api.cricapi.com/v1/currentMatches?apikey=${apiKey}&offset=0`);
+    const data = await res.json();
 
-    if (!data || !data.data) {
-      scoresContainer.innerHTML = "No live scores available.";
+    if (!data || !data.data || data.data.length === 0) {
+      scoresContainer.innerHTML = '<p>No live matches available.</p>';
       return;
     }
 
-    scoresContainer.innerHTML = "";
-
-    data.data.forEach(match => {
-      const matchElement = document.createElement('div');
-      matchElement.classList.add('match');
-
-      const teams = match.teams;
-      const status = match.status || 'Status not available';
-
-      matchElement.innerHTML = `
-        <div class="team">
-          <span>${teams[0]}</span>
-          <span>vs</span>
-          <span>${teams[1]}</span>
-        </div>
-        <div class="status">${status}</div>
-      `;
-
-      scoresContainer.appendChild(matchElement);
-    });
-  } catch (error) {
-    console.error(error);
-    scoresContainer.innerHTML = "Failed to fetch scores.";
+    scoresContainer.innerHTML = '';
+    // Display logic here (same as before)...
+  } catch (err) {
+    console.error(err);
+    scoresContainer.innerHTML = '<p>Error fetching scores. Try again later.</p>';
   }
 }
-
-fetchScores();
-setInterval(fetchScores, 30000); // Auto refresh every 30 seconds
