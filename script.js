@@ -1,9 +1,9 @@
-const apiKey = 'YOUR_API_KEY_HERE'; // Replace this with your API key
+const apiKey = '07de5d6b-7ed8-422a-a14a-6841c545e373';
 const scoresContainer = document.getElementById('scores');
 
 async function fetchScores() {
   try {
-    const response = await fetch('https://api.cricapi.com/v1/currentMatches?apikey=' + apiKey + '&offset=0');
+    const response = await fetch(`https://api.cricapi.com/v1/currentMatches?apikey=${apiKey}&offset=0`);
     const data = await response.json();
 
     if (!data || !data.data) {
@@ -17,13 +17,16 @@ async function fetchScores() {
       const matchElement = document.createElement('div');
       matchElement.classList.add('match');
 
+      const teams = match.teams;
+      const status = match.status || 'Status not available';
+
       matchElement.innerHTML = `
         <div class="team">
-          <span>${match.teams[0]}</span>
+          <span>${teams[0]}</span>
           <span>vs</span>
-          <span>${match.teams[1]}</span>
+          <span>${teams[1]}</span>
         </div>
-        <div class="status">${match.status}</div>
+        <div class="status">${status}</div>
       `;
 
       scoresContainer.appendChild(matchElement);
