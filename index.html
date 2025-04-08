@@ -3,30 +3,92 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FantasyCrick - Matches</title>
+  <title>FantasyCrick - Multi Sports</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
 
+  <!-- Header -->
   <header class="bg-white shadow-md p-4 flex justify-between items-center">
-    <h1 class="text-xl font-bold text-blue-600">FantasyCrick</h1>
+    <h1 class="text-xl font-bold text-blue-600">FantasyArena</h1>
     <a href="wallet.html" class="text-blue-600 font-semibold">Wallet</a>
   </header>
 
-  <main class="p-4">
-    <h2 class="text-lg font-semibold mb-4">Upcoming Matches</h2>
-    <div class="space-y-4">
-      <a href="contests.html" class="block bg-white p-4 rounded shadow hover:shadow-lg">
+  <!-- Sport Tabs -->
+  <div class="p-4">
+    <div class="flex gap-2 mb-4">
+      <button onclick="showSport('cricket')" class="sport-tab bg-blue-600 text-white px-4 py-2 rounded">Cricket</button>
+      <button onclick="showSport('football')" class="sport-tab bg-gray-200 px-4 py-2 rounded">Football</button>
+      <button onclick="showSport('kabaddi')" class="sport-tab bg-gray-200 px-4 py-2 rounded">Kabaddi</button>
+      <button onclick="showSport('baseball')" class="sport-tab bg-gray-200 px-4 py-2 rounded">Baseball</button>
+    </div>
+
+    <!-- Cricket Matches -->
+    <div id="cricket" class="sport-list">
+      <h2 class="text-lg font-semibold mb-2">Upcoming Cricket Matches</h2>
+      <a href="contests.html" class="block bg-white p-4 rounded shadow mb-2">
         <div class="flex justify-between items-center">
           <div>
             <h3 class="font-bold">IND vs AUS</h3>
             <p class="text-sm text-gray-500">April 10, 7:00 PM</p>
           </div>
-          <button class="px-3 py-1 bg-blue-600 text-white rounded">View Contests</button>
+          <button class="px-3 py-1 bg-blue-600 text-white rounded">Contests</button>
         </div>
       </a>
     </div>
-  </main>
+
+    <!-- Football Matches -->
+    <div id="football" class="sport-list hidden">
+      <h2 class="text-lg font-semibold mb-2">Upcoming Football Matches</h2>
+      <a href="contests.html" class="block bg-white p-4 rounded shadow mb-2">
+        <div class="flex justify-between items-center">
+          <div>
+            <h3 class="font-bold">BAR vs RMA</h3>
+            <p class="text-sm text-gray-500">April 11, 9:00 PM</p>
+          </div>
+          <button class="px-3 py-1 bg-blue-600 text-white rounded">Contests</button>
+        </div>
+      </a>
+    </div>
+
+    <!-- Kabaddi Matches -->
+    <div id="kabaddi" class="sport-list hidden">
+      <h2 class="text-lg font-semibold mb-2">Upcoming Kabaddi Matches</h2>
+      <a href="contests.html" class="block bg-white p-4 rounded shadow mb-2">
+        <div class="flex justify-between items-center">
+          <div>
+            <h3 class="font-bold">DEL vs PAT</h3>
+            <p class="text-sm text-gray-500">April 12, 6:30 PM</p>
+          </div>
+          <button class="px-3 py-1 bg-blue-600 text-white rounded">Contests</button>
+        </div>
+      </a>
+    </div>
+
+    <!-- Baseball Matches -->
+    <div id="baseball" class="sport-list hidden">
+      <h2 class="text-lg font-semibold mb-2">Upcoming Baseball Matches</h2>
+      <a href="contests.html" class="block bg-white p-4 rounded shadow mb-2">
+        <div class="flex justify-between items-center">
+          <div>
+            <h3 class="font-bold">NY Yankees vs Red Sox</h3>
+            <p class="text-sm text-gray-500">April 13, 8:00 PM</p>
+          </div>
+          <button class="px-3 py-1 bg-blue-600 text-white rounded">Contests</button>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function showSport(sport) {
+      document.querySelectorAll('.sport-list').forEach(el => el.classList.add('hidden'));
+      document.getElementById(sport).classList.remove('hidden');
+
+      document.querySelectorAll('.sport-tab').forEach(btn => btn.classList.remove('bg-blue-600', 'text-white'));
+      event.target.classList.add('bg-blue-600', 'text-white');
+    }
+  </script>
 
 </body>
 </html>
