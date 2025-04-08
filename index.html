@@ -1,1 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fantasy Cricket App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
 
+  <!-- Header -->
+  <header class="bg-white shadow p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold">FantasyCrick</h1>
+    <nav>
+      <ul class="flex gap-4 text-sm">
+        <li><a href="#" class="hover:text-blue-600">Home</a></li>
+        <li><a href="#" class="hover:text-blue-600">Contests</a></li>
+        <li><a href="#" class="hover:text-blue-600">Wallet</a></li>
+        <li><a href="#" class="hover:text-blue-600">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Upcoming Matches -->
+  <section class="p-4">
+    <h2 class="text-lg font-semibold mb-2">Upcoming Matches</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <!-- Match Card -->
+      <div class="bg-white p-4 rounded shadow">
+        <h3 class="font-bold text-lg">IND vs AUS</h3>
+        <p class="text-sm text-gray-500">April 10, 2025 - 7:00 PM</p>
+        <button class="mt-3 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">View Contests</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white shadow p-4 text-center text-sm mt-6">
+    &copy; 2025 FantasyCrick. All rights reserved.
+  </footer>
+
+</body>
+</html>
