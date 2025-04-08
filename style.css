@@ -1,0 +1,86 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+}
+
+/* Top Navbar */
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 16px;
+  padding: 16px;
+}
+
+.navbar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+}
+
+.app-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+.wallet-link {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.wallet-link:hover {
+  text-decoration: underline;
+}
+
+/* Sports Tabs */
+.sports-tabs {
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.sports-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tabs-list {
+  display: flex;
+  gap: 8px;
+}
+
+.tab {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  background-color: #e5e7eb;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.tab:hover {
+  background-color: #2563eb;
+  color: #fff;
+}
+
+.tab.active {
+  background-color: #2563eb;
+  color: #fff;
+}
