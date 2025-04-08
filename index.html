@@ -1,94 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FantasyCrick - Multi Sports</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlayVerse</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-100">
+<body>
 
-<!-- Top Navbar with Logo -->
-<header class="bg-white shadow-md mt-4 px-4 py-2">
-  <div class="flex items-center justify-between mb-3">
-    <!-- Logo -->
-    <div class="flex items-center space-x-2">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Circle-icons-sports.svg/2048px-Circle-icons-sports.svg.png" alt="Logo" class="w-8 h-8">
-      <h1 class="text-xl font-bold text-blue-700">PlayVerse</h1>
+  <!-- Top Navbar -->
+  <header class="navbar">
+    <div class="navbar-top">
+      <div class="logo-section">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Circle-icons-sports.svg/2048px-Circle-icons-sports.svg.png" alt="Logo" class="logo">
+        <h1 class="app-title">PlayVerse</h1>
+      </div>
+      <a href="wallet.html" class="wallet-link">Wallet</a>
     </div>
 
-    <!-- Wallet -->
-    <a href="wallet.html" class="text-base text-blue-600 font-semibold hover:underline">Wallet</a>
-  </div>
-
-  <!-- Sports Navbar -->
-  <nav class="overflow-x-auto scrollbar-hide">
-    <ul class="flex space-x-2">
-      <li><a href="cricket.html" class="inline-block px-4 py-2 text-base font-semibold bg-blue-600 text-white rounded-md">Cricket</a></li>
-      <li><a href="football.html" class="inline-block px-4 py-2 text-base font-semibold bg-gray-100 text-gray-800 rounded-md">Football</a></li>
-      <li><a href="kabaddi.html" class="inline-block px-4 py-2 text-base font-semibold bg-gray-100 text-gray-800 rounded-md">Kabaddi</a></li>
-      <li><a href="baseball.html" class="inline-block px-4 py-2 text-base font-semibold bg-gray-100 text-gray-800 rounded-md">Baseball</a></li>
-      <li><a href="khokho.html" class="inline-block px-4 py-2 text-base font-semibold bg-gray-100 text-gray-800 rounded-md">Kho-Kho</a></li>
-      <li><a href="volleyball.html" class="inline-block px-4 py-2 text-base font-semibold bg-gray-100 text-gray-800 rounded-md">Volleyball</a></li>
-      <li><a href="hockey.html" class="inline-block px-4 py-2 text-base font-semibold bg-gray-100 text-gray-800 rounded-md">Hockey</a></li>
-      <li><a href="running.html" class="inline-block px-4 py-2 text-base font-semibold bg-gray-100 text-gray-800 rounded-md">Running</a></li>
-    </ul>
-  </nav>
-</header>
-    
-
-    <!-- Football Matches -->
-    <div id="football" class="sport-list hidden">
-      <h2 class="text-lg font-semibold mb-2">Upcoming Football Matches</h2>
-      <a href="contests.html" class="block bg-white p-4 rounded shadow mb-2">
-        <div class="flex justify-between items-center">
-          <div>
-            <h3 class="font-bold">BAR vs RMA</h3>
-            <p class="text-sm text-gray-500">April 11, 9:00 PM</p>
-          </div>
-          <button class="px-3 py-1 bg-blue-600 text-white rounded">Contests</button>
-        </div>
-      </a>
-    </div>
-
-    <!-- Kabaddi Matches -->
-    <div id="kabaddi" class="sport-list hidden">
-      <h2 class="text-lg font-semibold mb-2">Upcoming Kabaddi Matches</h2>
-      <a href="contests.html" class="block bg-white p-4 rounded shadow mb-2">
-        <div class="flex justify-between items-center">
-          <div>
-            <h3 class="font-bold">DEL vs PAT</h3>
-            <p class="text-sm text-gray-500">April 12, 6:30 PM</p>
-          </div>
-          <button class="px-3 py-1 bg-blue-600 text-white rounded">Contests</button>
-        </div>
-      </a>
-    </div>
-
-    <!-- Baseball Matches -->
-    <div id="baseball" class="sport-list hidden">
-      <h2 class="text-lg font-semibold mb-2">Upcoming Baseball Matches</h2>
-      <a href="contests.html" class="block bg-white p-4 rounded shadow mb-2">
-        <div class="flex justify-between items-center">
-          <div>
-            <h3 class="font-bold">NY Yankees vs Red Sox</h3>
-            <p class="text-sm text-gray-500">April 13, 8:00 PM</p>
-          </div>
-          <button class="px-3 py-1 bg-blue-600 text-white rounded">Contests</button>
-        </div>
-      </a>
-    </div>
-  </div>
-
-  <script>
-    function showSport(sport) {
-      document.querySelectorAll('.sport-list').forEach(el => el.classList.add('hidden'));
-      document.getElementById(sport).classList.remove('hidden');
-
-      document.querySelectorAll('.sport-tab').forEach(btn => btn.classList.remove('bg-blue-600', 'text-white'));
-      event.target.classList.add('bg-blue-600', 'text-white');
-    }
-  </script>
+    <!-- Sports Tabs -->
+    <nav class="sports-tabs">
+      <ul class="tabs-list">
+        <li><a href="cricket.html" class="tab active">Cricket</a></li>
+        <li><a href="football.html" class="tab">Football</a></li>
+        <li><a href="kabaddi.html" class="tab">Kabaddi</a></li>
+        <li><a href="baseball.html" class="tab">Baseball</a></li>
+        <li><a href="khokho.html" class="tab">Kho-Kho</a></li>
+        <li><a href="volleyball.html" class="tab">Volleyball</a></li>
+        <li><a href="hockey.html" class="tab">Hockey</a></li>
+        <li><a href="running.html" class="tab">Running</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <!-- Bottom Navbar -->
 <nav class="fixed bottom-0 left-0 right-0 bg-white shadow border-t flex justify-around text-sm z-50">
@@ -117,6 +60,3 @@
     Profile
   </a>
 </nav>
-
-</body>
-</html>
