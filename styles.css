@@ -1,0 +1,32 @@
+body {
+  font-family: sans-serif;
+  padding-bottom: 60px;
+  background: #f2f2f2;
+  margin: 0;
+}
+
+.match-card {
+  background: white;
+  border: 1px solid #ddd;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+.bottom-nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
