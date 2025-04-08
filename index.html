@@ -8,20 +8,25 @@
 </head>
 <body class="bg-gray-100">
 
-  <!-- Header -->
-  <header class="bg-white shadow-md p-4 flex justify-between items-center">
+  <!-- Top Sports Navbar -->
+<header class="bg-white shadow-md p-4">
+  <div class="flex justify-between items-center mb-2">
     <h1 class="text-xl font-bold text-blue-600">FantasyArena</h1>
-    <a href="wallet.html" class="text-blue-600 font-semibold">Wallet</a>
-  </header>
+    <a href="wallet.html" class="text-blue-600 font-semibold text-sm">Wallet</a>
+  </div>
 
-  <!-- Sport Tabs -->
-  <div class="p-4">
-    <div class="flex gap-2 mb-4">
-      <button onclick="showSport('cricket')" class="sport-tab bg-blue-600 text-white px-4 py-2 rounded">Cricket</button>
-      <button onclick="showSport('football')" class="sport-tab bg-gray-200 px-4 py-2 rounded">Football</button>
-      <button onclick="showSport('kabaddi')" class="sport-tab bg-gray-200 px-4 py-2 rounded">Kabaddi</button>
-      <button onclick="showSport('baseball')" class="sport-tab bg-gray-200 px-4 py-2 rounded">Baseball</button>
-    </div>
+  <!-- Scrollable Sports Menu -->
+  <nav class="flex gap-2 overflow-x-auto whitespace-nowrap text-sm">
+    <a href="cricket.html" class="px-3 py-1 bg-blue-600 text-white rounded-full">Cricket</a>
+    <a href="football.html" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full">Football</a>
+    <a href="kabaddi.html" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full">Kabaddi</a>
+    <a href="baseball.html" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full">Baseball</a>
+    <a href="khokho.html" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full">Kho-Kho</a>
+    <a href="volleyball.html" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full">Volleyball</a>
+    <a href="hockey.html" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full">Hockey</a>
+    <a href="running.html" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full">Running</a>
+  </nav>
+</header>
 
     <!-- Cricket Matches -->
     <div id="cricket" class="sport-list">
