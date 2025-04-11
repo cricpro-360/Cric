@@ -1,31 +1,152 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="kn">
 <head>
-  <meta charset="UTF-8">
-  <title>Fantasy App - Matches</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NewsBuzz - ಸ್ಥಳೀಯ ಸುದ್ದಿ ಅಪ್ಲಿಕೇಶನ್</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <h1>ಪೋಸ್ಟ್ ಸೃಷ್ಟಿಸಿ</h1>
+  <div id="message" class="message"></div>  <input type="text" id="title" placeholder="ಶೀರ್ಷಿಕೆ ನಮೂದಿಸಿ">
+  <textarea id="content" placeholder="ವಿಷಯ ನಮೂದಿಸಿ" rows="4"></textarea>
+  <input type="file" id="image" accept="image/*">  <!-- Location selectors -->  <select id="state" onchange="updateDistricts()">
+    <option value="">ರಾಜ್ಯ ಆಯ್ಕೆಮಾಡಿ</option>
+    <option value="ಕರ್ನಾಟಕ">ಕರ್ನಾಟಕ</option>
+  </select>  <select id="district" onchange="updateTaluks()">
+    <option value="">ಜಿಲ್ಲೆ ಆಯ್ಕೆಮಾಡಿ</option>
+  </select>  <select id="taluk">
+    <option value="">ತಾಲೂಕು ಆಯ್ಕೆಮಾಡಿ</option>
+  </select><button onclick="createPost()">ಪೋಸ್ಟ್ ಸಲ್ಲಿಸಿ</button>
 
-  <h2>Upcoming Matches</h2>
+  <h2>ಎಲ್ಲಾ ಪೋಸ್ಟ್‌ಗಳು</h2>  <div id="posts" class="post-container">
+    <p class="no-posts">ಪೋಸ್ಟ್‌ಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ...</p>
+  </div>  <script>
+    const API_URL = 'https://newsbuzz-1.onrender.com';
 
-  <div class="match-card">
-    <p>India vs Australia</p>
-    <p>Start Time: 7:00 PM</p>
-    <a href="contest.html">Join Contest</a>
-  </div>
+    const locationData = {
+      'ಕರ್ನಾಟಕ': {
+        'ಹುಬ್ಬಳ್ಳಿ': ['ಹುಬ್ಬಳ್ಳಿ ಉತ್ತರ', 'ಹುಬ್ಬಳ್ಳಿ ದಕ್ಷಿಣ', 'ನವಲಗುಂದ'],
+        'ಮೈಸೂರು': ['ಮೈಸೂರು ನಗರ', 'ಮೈಸೂರು ಗ್ರಾಮಾಂತರ', 'ನಂಜನಗೂಡು']
+      }
+    };
 
-  <div class="match-card">
-    <p>England vs Pakistan</p>
-    <p>Start Time: 9:00 PM</p>
-    <a href="contest.html">Join Contest</a>
-  </div>
+    function updateDistricts() {
+      const state = document.getElementById('state').value;
+      const districtSelect = document.getElementById('district');
+      const talukSelect = document.getElementById('taluk');
+      districtSelect.innerHTML = '<option value="">ಜಿಲ್ಲೆ ಆಯ್ಕೆಮಾಡಿ</option>';
+      talukSelect.innerHTML = '<option value="">ತಾಲೂಕು ಆಯ್ಕೆಮಾಡಿ</option>';
 
-  <div class="bottom-nav">
-    <a href="index.html">Home</a>
-    <a href="wallet.html">Wallet</a>
-    <a href="leaderboard.html">Leaderboard</a>
-  </div>
+      if (locationData[state]) {
+        Object.keys(locationData[state]).forEach(district => {
+          const option = document.createElement('option');
+          option.value = district;
+          option.textContent = district;
+          districtSelect.appendChild(option);
+        });
+      }
+    }
 
-</body>
+    function updateTaluks() {
+      const state = document.getElementById('state').value;
+      const district = document.getElementById('district').value;
+      const talukSelect = document.getElementById('taluk');
+      talukSelect.innerHTML = '<option value="">ತಾಲೂಕು ಆಯ್ಕೆಮಾಡಿ</option>';
+
+      if (locationData[state] && locationData[state][district]) {
+        locationData[state][district].forEach(taluk => {
+          const option = document.createElement('option');
+          option.value = taluk;
+          option.textContent = taluk;
+          talukSelect.appendChild(option);
+        });
+      }
+    }
+
+    function showMessage(text, type) {
+      const msgDiv = document.getElementById('message');
+      msgDiv.textContent = text;
+      msgDiv.className = `message ${type}`;
+      msgDiv.style.display = 'block';
+      setTimeout(() => msgDiv.style.display = 'none', 4000);
+    }
+
+    function createPost() {
+      const title = document.getElementById('title').value.trim();
+      const content = document.getElementById('content').value.trim();
+      const state = document.getElementById('state').value.trim();
+      const district = document.getElementById('district').value.trim();
+      const taluk = document.getElementById('taluk').value.trim();
+      const imageFile = document.getElementById('image').files[0];
+
+      if (!title || !content || !state || !district || !taluk) {
+        showMessage("ದಯವಿಟ್ಟು ಎಲ್ಲ ಫೀಲ್ಡ್‌ಗಳನ್ನು ಪೂರ್ತಿ ಭರ್ತಿ ಮಾಡಿ.", "error");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('title', title);
+      formData.append('content', content);
+      formData.append('state', state);
+      formData.append('district', district);
+      formData.append('taluk', taluk);
+      if (imageFile) formData.append('image', imageFile);
+
+      fetch(`${API_URL}/posts`, {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => {
+        if (!res.ok) throw new Error("Server error");
+        return res.json();
+      })
+      .then(() => {
+        showMessage("ಪೋಸ್ಟ್ ಯಶಸ್ವಿಯಾಗಿ ರಚಿಸಲಾಗಿದೆ!", "success");
+        document.getElementById('title').value = '';
+        document.getElementById('content').value = '';
+        document.getElementById('state').value = '';
+        document.getElementById('district').value = '';
+        document.getElementById('taluk').value = '';
+        document.getElementById('image').value = '';
+        loadPosts();
+      })
+      .catch(err => {
+        console.error("Error:", err);
+        showMessage("ಪೋಸ್ಟ್ ಸೃಷ್ಟಿಸುವಲ್ಲಿ ದೋಷ ಸಂಭವಿಸಿದೆ. ದಯವಿಟ್ಟು ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.", "error");
+      });
+    }
+
+    function loadPosts() {
+      fetch(`${API_URL}/posts`)
+        .then(res => res.json())
+        .then(posts => {
+          const postDiv = document.getElementById('posts');
+          postDiv.innerHTML = '';
+
+          if (!posts || posts.length === 0) {
+            postDiv.innerHTML = "<p class='no-posts'>ಯಾವುದೇ ಪೋಸ್ಟ್‌ಗಳು ಲಭ್ಯವಿಲ್ಲ. ಮೊದಲು ನೀವು ರಚಿಸಿ!</p>";
+            return;
+          }
+
+          posts.forEach(post => {
+            const date = new Date(post.createdAt).toLocaleString();
+            postDiv.innerHTML += `
+              <div class="post">
+                <h3>${post.title}</h3>
+                <p>${post.content}</p>
+                <p><strong>ರಾಜ್ಯ:</strong> ${post.state || '-'}, <strong>ಜಿಲ್ಲೆ:</strong> ${post.district || '-'}, <strong>ತಾಲೂಕು:</strong> ${post.taluk || '-'}</p>
+                ${post.imageUrl ? `<img src="${post.imageUrl}" alt="Post Image" class="post-image" onerror="this.style.display='none'">` : ''}
+                <small>Posted on ${date}</small>
+              </div>
+            `;
+          });
+        })
+        .catch(err => {
+          console.error("Failed to load posts:", err);
+          document.getElementById('posts').innerHTML = "<p class='error-text'>ಪೋಸ್ಟ್‌ಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ.</p>";
+        });
+    }
+
+    window.onload = loadPosts;
+  </script></body>
 </html>
