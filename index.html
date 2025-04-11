@@ -26,13 +26,24 @@
       top: 0;
       left: 0;
       width: 100%;
+      display: flex;
       background-color: #fff;
+      justify-content: space-between;
       color: #1e1e1e;
       padding: 15px 20px;
-      text-align: center;
+      align-items : center;
       font-size: 18px;
       z-index: 1000;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+    }
+
+    .navbar-title {
+      font-weight: bold;
+    }
+
+    .navbar-menu {
+      font-size: 20px;
+      cursor: pointer;
     }
 
     /* Bottom Navbar */
@@ -91,7 +102,8 @@
 
   <!-- Top Navbar -->
   <div class="top-navbar">
-    Local News App
+    <div class="navbar-title">Local News App</div>
+    <div class="navbar-menu"><i class="fas fa-ellipsis-v"></i></div>
   </div>
 
   <!-- Main Content -->
