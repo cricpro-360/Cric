@@ -1,152 +1,131 @@
-<!DOCTYPE html><html lang="kn">
+<!DOCTYPE html>
+<html lang="kn">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NewsBuzz - ಸ್ಥಳೀಯ ಸುದ್ದಿ ಅಪ್ಲಿಕೇಶನ್</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local News App</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      padding-top: 60px;
+      padding-bottom: 60px;
+      background-color: #f9f9f9;
+    }
+
+    /* Top Navbar */
+    .top-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #1e1e1e;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+      font-size: 18px;
+      z-index: 1000;
+    }
+
+    /* Bottom Navbar */
+    .bottom-navbar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #1e1e1e;
+      color: white;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px 0;
+      z-index: 1000;
+    }
+
+    .bottom-navbar a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      padding: 5px 10px;
+      transition: background 0.3s;
+    }
+
+    .bottom-navbar a:hover {
+      background-color: #333;
+      border-radius: 5px;
+    }
+
+    /* Main Content */
+    .content {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
+      .top-navbar {
+        font-size: 16px;
+        padding: 12px;
+      }
+
+      .bottom-navbar a {
+        font-size: 13px;
+      }
+
+      .content {
+        padding: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .top-navbar {
+        font-size: 15px;
+      }
+
+      .bottom-navbar {
+        flex-direction: column;
+        padding: 8px 0;
+      }
+
+      .bottom-navbar a {
+        font-size: 12px;
+        margin: 3px 0;
+      }
+
+      .content {
+        padding: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>ಪೋಸ್ಟ್ ಸೃಷ್ಟಿಸಿ</h1>
-  <div id="message" class="message"></div>  <input type="text" id="title" placeholder="ಶೀರ್ಷಿಕೆ ನಮೂದಿಸಿ">
-  <textarea id="content" placeholder="ವಿಷಯ ನಮೂದಿಸಿ" rows="4"></textarea>
-  <input type="file" id="image" accept="image/*">  <!-- Location selectors -->  <select id="state" onchange="updateDistricts()">
-    <option value="">ರಾಜ್ಯ ಆಯ್ಕೆಮಾಡಿ</option>
-    <option value="ಕರ್ನಾಟಕ">ಕರ್ನಾಟಕ</option>
-  </select>  <select id="district" onchange="updateTaluks()">
-    <option value="">ಜಿಲ್ಲೆ ಆಯ್ಕೆಮಾಡಿ</option>
-  </select>  <select id="taluk">
-    <option value="">ತಾಲೂಕು ಆಯ್ಕೆಮಾಡಿ</option>
-  </select><button onclick="createPost()">ಪೋಸ್ಟ್ ಸಲ್ಲಿಸಿ</button>
 
-  <h2>ಎಲ್ಲಾ ಪೋಸ್ಟ್‌ಗಳು</h2>  <div id="posts" class="post-container">
-    <p class="no-posts">ಪೋಸ್ಟ್‌ಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ...</p>
-  </div>  <script>
-    const API_URL = 'https://newsbuzz-1.onrender.com';
+  <!-- Top Navbar -->
+  <div class="top-navbar">
+    Local News App
+  </div>
 
-    const locationData = {
-      'ಕರ್ನಾಟಕ': {
-        'ಹುಬ್ಬಳ್ಳಿ': ['ಹುಬ್ಬಳ್ಳಿ ಉತ್ತರ', 'ಹುಬ್ಬಳ್ಳಿ ದಕ್ಷಿಣ', 'ನವಲಗುಂದ'],
-        'ಮೈಸೂರು': ['ಮೈಸೂರು ನಗರ', 'ಮೈಸೂರು ಗ್ರಾಮಾಂತರ', 'ನಂಜನಗೂಡು']
-      }
-    };
+  <!-- Main Content -->
+  <div class="content">
+    <h2>ಸ್ವಾಗತ!</h2>
+    <p>ಇದು responsive fixed navbar ಹೊಂದಿರುವ ಲೇಔಟ್. ಎಲ್ಲಾ ಸ್ಕ್ರೀನ್ ಗಳು (mobile, tablet, desktop) ಗೆ ಸರಿಹೊಂದುತ್ತೆ.</p>
+    <p>ನಿಮ್ಮ ಸುದ್ದಿಗಳನ್ನು ಇಲ್ಲಿ ಪ್ರದರ್ಶಿಸಬಹುದು.</p>
+    <p>ಇನ್ನಷ್ಟು ಅಂಶಗಳು ಸೇರಿಸಲು தயಾರಿ.</p>
+  </div>
 
-    function updateDistricts() {
-      const state = document.getElementById('state').value;
-      const districtSelect = document.getElementById('district');
-      const talukSelect = document.getElementById('taluk');
-      districtSelect.innerHTML = '<option value="">ಜಿಲ್ಲೆ ಆಯ್ಕೆಮಾಡಿ</option>';
-      talukSelect.innerHTML = '<option value="">ತಾಲೂಕು ಆಯ್ಕೆಮಾಡಿ</option>';
+  <!-- Bottom Navbar -->
+  <div class="bottom-navbar">
+    <a href="#">Home</a>
+    <a href="#">Create</a>
+    <a href="#">Posts</a>
+    <a href="#">Profile</a>
+  </div>
 
-      if (locationData[state]) {
-        Object.keys(locationData[state]).forEach(district => {
-          const option = document.createElement('option');
-          option.value = district;
-          option.textContent = district;
-          districtSelect.appendChild(option);
-        });
-      }
-    }
-
-    function updateTaluks() {
-      const state = document.getElementById('state').value;
-      const district = document.getElementById('district').value;
-      const talukSelect = document.getElementById('taluk');
-      talukSelect.innerHTML = '<option value="">ತಾಲೂಕು ಆಯ್ಕೆಮಾಡಿ</option>';
-
-      if (locationData[state] && locationData[state][district]) {
-        locationData[state][district].forEach(taluk => {
-          const option = document.createElement('option');
-          option.value = taluk;
-          option.textContent = taluk;
-          talukSelect.appendChild(option);
-        });
-      }
-    }
-
-    function showMessage(text, type) {
-      const msgDiv = document.getElementById('message');
-      msgDiv.textContent = text;
-      msgDiv.className = `message ${type}`;
-      msgDiv.style.display = 'block';
-      setTimeout(() => msgDiv.style.display = 'none', 4000);
-    }
-
-    function createPost() {
-      const title = document.getElementById('title').value.trim();
-      const content = document.getElementById('content').value.trim();
-      const state = document.getElementById('state').value.trim();
-      const district = document.getElementById('district').value.trim();
-      const taluk = document.getElementById('taluk').value.trim();
-      const imageFile = document.getElementById('image').files[0];
-
-      if (!title || !content || !state || !district || !taluk) {
-        showMessage("ದಯವಿಟ್ಟು ಎಲ್ಲ ಫೀಲ್ಡ್‌ಗಳನ್ನು ಪೂರ್ತಿ ಭರ್ತಿ ಮಾಡಿ.", "error");
-        return;
-      }
-
-      const formData = new FormData();
-      formData.append('title', title);
-      formData.append('content', content);
-      formData.append('state', state);
-      formData.append('district', district);
-      formData.append('taluk', taluk);
-      if (imageFile) formData.append('image', imageFile);
-
-      fetch(`${API_URL}/posts`, {
-        method: 'POST',
-        body: formData
-      })
-      .then(res => {
-        if (!res.ok) throw new Error("Server error");
-        return res.json();
-      })
-      .then(() => {
-        showMessage("ಪೋಸ್ಟ್ ಯಶಸ್ವಿಯಾಗಿ ರಚಿಸಲಾಗಿದೆ!", "success");
-        document.getElementById('title').value = '';
-        document.getElementById('content').value = '';
-        document.getElementById('state').value = '';
-        document.getElementById('district').value = '';
-        document.getElementById('taluk').value = '';
-        document.getElementById('image').value = '';
-        loadPosts();
-      })
-      .catch(err => {
-        console.error("Error:", err);
-        showMessage("ಪೋಸ್ಟ್ ಸೃಷ್ಟಿಸುವಲ್ಲಿ ದೋಷ ಸಂಭವಿಸಿದೆ. ದಯವಿಟ್ಟು ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.", "error");
-      });
-    }
-
-    function loadPosts() {
-      fetch(`${API_URL}/posts`)
-        .then(res => res.json())
-        .then(posts => {
-          const postDiv = document.getElementById('posts');
-          postDiv.innerHTML = '';
-
-          if (!posts || posts.length === 0) {
-            postDiv.innerHTML = "<p class='no-posts'>ಯಾವುದೇ ಪೋಸ್ಟ್‌ಗಳು ಲಭ್ಯವಿಲ್ಲ. ಮೊದಲು ನೀವು ರಚಿಸಿ!</p>";
-            return;
-          }
-
-          posts.forEach(post => {
-            const date = new Date(post.createdAt).toLocaleString();
-            postDiv.innerHTML += `
-              <div class="post">
-                <h3>${post.title}</h3>
-                <p>${post.content}</p>
-                <p><strong>ರಾಜ್ಯ:</strong> ${post.state || '-'}, <strong>ಜಿಲ್ಲೆ:</strong> ${post.district || '-'}, <strong>ತಾಲೂಕು:</strong> ${post.taluk || '-'}</p>
-                ${post.imageUrl ? `<img src="${post.imageUrl}" alt="Post Image" class="post-image" onerror="this.style.display='none'">` : ''}
-                <small>Posted on ${date}</small>
-              </div>
-            `;
-          });
-        })
-        .catch(err => {
-          console.error("Failed to load posts:", err);
-          document.getElementById('posts').innerHTML = "<p class='error-text'>ಪೋಸ್ಟ್‌ಗಳನ್ನು ಲೋಡ್ ಮಾಡಲು ವಿಫಲವಾಗಿದೆ.</p>";
-        });
-    }
-
-    window.onload = loadPosts;
-  </script></body>
+</body>
 </html>
