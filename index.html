@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Local News App</title>
+  <title>Navbar with Icons</title>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     * {
       margin: 0;
@@ -15,7 +18,6 @@
       font-family: Arial, sans-serif;
       padding-top: 60px;
       padding-bottom: 60px;
-      background-color: #f9f9f9;
     }
 
     /* Top Navbar */
@@ -39,7 +41,6 @@
       left: 0;
       width: 100%;
       background-color: #1e1e1e;
-      color: white;
       display: flex;
       justify-content: space-around;
       align-items: center;
@@ -50,56 +51,35 @@
     .bottom-navbar a {
       color: white;
       text-decoration: none;
-      font-size: 14px;
-      padding: 5px 10px;
-      transition: background 0.3s;
+      text-align: center;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .bottom-navbar a i {
+      font-size: 18px;
+      margin-bottom: 3px;
     }
 
     .bottom-navbar a:hover {
-      background-color: #333;
-      border-radius: 5px;
+      color: #00aced;
     }
 
-    /* Main Content */
+    /* Content Area */
     .content {
       padding: 20px;
-      max-width: 800px;
-      margin: auto;
     }
 
-    /* Media Queries */
-    @media (max-width: 768px) {
-      .top-navbar {
-        font-size: 16px;
-        padding: 12px;
-      }
-
-      .bottom-navbar a {
-        font-size: 13px;
-      }
-
-      .content {
-        padding: 15px;
-      }
-    }
-
+    /* Responsive */
     @media (max-width: 480px) {
-      .top-navbar {
-        font-size: 15px;
-      }
-
-      .bottom-navbar {
-        flex-direction: column;
-        padding: 8px 0;
+      .bottom-navbar a i {
+        font-size: 16px;
       }
 
       .bottom-navbar a {
-        font-size: 12px;
-        margin: 3px 0;
-      }
-
-      .content {
-        padding: 10px;
+        font-size: 11px;
       }
     }
   </style>
@@ -114,17 +94,15 @@
   <!-- Main Content -->
   <div class="content">
     <h2>ಸ್ವಾಗತ!</h2>
-    <p>ಇದು responsive fixed navbar ಹೊಂದಿರುವ ಲೇಔಟ್. ಎಲ್ಲಾ ಸ್ಕ್ರೀನ್ ಗಳು (mobile, tablet, desktop) ಗೆ ಸರಿಹೊಂದುತ್ತೆ.</p>
-    <p>ನಿಮ್ಮ ಸುದ್ದಿಗಳನ್ನು ಇಲ್ಲಿ ಪ್ರದರ್ಶಿಸಬಹುದು.</p>
-    <p>ಇನ್ನಷ್ಟು ಅಂಶಗಳು ಸೇರಿಸಲು தயಾರಿ.</p>
+    <p>ನೀವು ಈಗ navbar icons ಜೊತೆಗೆ ನೋಡುತ್ತಿದ್ದೀರಿ. ಇದು responsive ಮತ್ತು fixed layout ಆಗಿದೆ.</p>
   </div>
 
-  <!-- Bottom Navbar -->
+  <!-- Bottom Navbar with Icons -->
   <div class="bottom-navbar">
-    <a href="#">Home</a>
-    <a href="#">Create</a>
-    <a href="#">Posts</a>
-    <a href="#">Profile</a>
+    <a href="#"><i class="fas fa-home"></i>Home</a>
+    <a href="#"><i class="fas fa-plus-circle"></i>Create</a>
+    <a href="#"><i class="fas fa-newspaper"></i>Posts</a>
+    <a href="#"><i class="fas fa-user"></i>Profile</a>
   </div>
 
 </body>
