@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Responsive Navbar with Icons</title>
-  
+  <title>Navbar with Icons</title>
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -16,10 +15,9 @@
     }
 
     body {
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       padding-top: 60px;
       padding-bottom: 60px;
-      background-color: #f4f4f4;
     }
 
     /* Top Navbar */
@@ -28,11 +26,11 @@
       top: 0;
       left: 0;
       width: 100%;
-      background-color: #333;
+      background-color: #1e1e1e;
       color: white;
       padding: 15px 20px;
       text-align: center;
-      font-size: 20px;
+      font-size: 18px;
       z-index: 1000;
     }
 
@@ -42,11 +40,11 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      background-color: #333;
+      background-color: #1e1e1e;
       display: flex;
       justify-content: space-around;
       align-items: center;
-      padding: 12px 0;
+      padding: 10px 0;
       z-index: 1000;
     }
 
@@ -54,73 +52,34 @@
       color: white;
       text-decoration: none;
       text-align: center;
-      font-size: 14px;
+      font-size: 12px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: all 0.3s ease;
     }
 
     .bottom-navbar a i {
-      font-size: 20px;
-      margin-bottom: 5px;
+      font-size: 18px;
+      margin-bottom: 3px;
     }
 
     .bottom-navbar a:hover {
       color: #00aced;
-      transform: scale(1.1);
-    }
-
-    .bottom-navbar a.active {
-      color: #00aced;
-      font-weight: bold;
     }
 
     /* Content Area */
     .content {
       padding: 20px;
-      margin-bottom: 80px;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
-    /* Media Queries */
-    @media (max-width: 768px) {
-      .bottom-navbar a i {
-        font-size: 18px;
-      }
-
-      .bottom-navbar a {
-        font-size: 12px;
-      }
-
-      .top-navbar {
-        font-size: 18px;
-      }
-
-      .content {
-        padding: 15px;
-      }
-    }
-
+    /* Responsive */
     @media (max-width: 480px) {
-      .bottom-navbar {
-        flex-direction: column;
-        padding: 8px 0;
-      }
-
       .bottom-navbar a i {
         font-size: 16px;
       }
 
       .bottom-navbar a {
-        font-size: 12px;
-        margin: 5px 0;
-      }
-
-      .content {
-        padding: 10px;
+        font-size: 11px;
       }
     }
   </style>
@@ -135,13 +94,12 @@
   <!-- Main Content -->
   <div class="content">
     <h2>ಸ್ವಾಗತ!</h2>
-    <p>ನೀವು ಈಗ navbar icons ಜೊತೆಗೆ ನೋಡುತ್ತಿದ್ದೀರಿ. ಇದು responsive ಮತ್ತು sleek design ಆಗಿದೆ.</p>
-    <p>ನಿಮ್ಮ ಜ್ಞಾಪಕಕ್ಕೆ ಸರಳ, ಸೊಗಸು, ಮತ್ತು ಸಣ್ಣ hover effects.</p>
+    <p>ನೀವು ಈಗ navbar icons ಜೊತೆಗೆ ನೋಡುತ್ತಿದ್ದೀರಿ. ಇದು responsive ಮತ್ತು fixed layout ಆಗಿದೆ.</p>
   </div>
 
   <!-- Bottom Navbar with Icons -->
   <div class="bottom-navbar">
-    <a href="#" class="active"><i class="fas fa-home"></i>Home</a>
+    <a href="#"><i class="fas fa-home"></i>Home</a>
     <a href="#"><i class="fas fa-plus-circle"></i>Create</a>
     <a href="#"><i class="fas fa-newspaper"></i>Posts</a>
     <a href="#"><i class="fas fa-user"></i>Profile</a>
