@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .container {
+      display: flex;
+      width: 200vw; /* two full-width pages */
+      transition: transform 0.5s ease-in-out;
+    }
+    .page {
+      width: 100vw;
+      height: 100vh;
+      flex-shrink: 0;
+    }
+    #home {
+      background-color: #4CAF50;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    #about {
+      background-color: #2196F3;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    button {
+      padding: 12px 20px;
+      background: white;
+      color: black;
+      border: none;
+      margin-top: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" id="pages">
+  <div class="page" id="home">
+    <h1>Home Page</h1>
+    <button onclick="goToPage(1)">Go to About Page</button>
+  </div>
+  <div class="page" id="about">
+    <h1>About Page</h1>
+    <button onclick="goToPage(0)">Back to Home</button>
+  </div>
+</div>
+
+<script>
+  function goToPage(pageIndex) {
+    document.getElementById("pages").style.transform = `translateX(-${pageIndex * 100}vw)`;
+  }
+</script>
+
+</body>
+</html>
